@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sorting Hat</title>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/platform/css/spin.css') }}">
+</head>
+<body>
+
+        <div>
+            <audio controls loop>
+                <source src="{{ asset('bundles/platform/wav/Song.mp3') }}" type="audio/mpeg">
+            </audio>
+
+            <element id="clicker" onkeypress="spin()"/>
+                <div align="center">
+                    <img id="schools" width="450" height="450" src="{{ asset('bundles/platform/images/Schools.png') }}">
+                    <img id="rotating" style=" visibility: hidden">
+                </div>
+        </div>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="{{ asset('bundles/platform/js/jQueryRotate.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/platform/js/spin.js') }}"></script>
+
+</html>

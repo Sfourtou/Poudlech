@@ -6,10 +6,10 @@ schools['Serpentard'] = 0;
 schools['Serdaigle'] = 0;
 schools['Poufsouffle'] = 0;
 
-var wavGryf = new Audio('wav/gryffindor.wav');
-var wavSerp = new Audio('wav/slytherin.wav');
-var wavSerd = new Audio('wav/ravenclaw.wav');
-var wavPouf = new Audio('wav/hufflepuff.wav');
+var wavGryf = new Audio('/bundles/platform/wav/gryffindor.wav');
+var wavSerp = new Audio('/bundles/platform/wav/slytherin.wav');
+var wavSerd = new Audio('/bundles/platform/wav/ravenclaw.wav');
+var wavPouf = new Audio('/bundles/platform/wav/hufflepuff.wav');
 
 $(document).ready(function spin() {
     $('#clicker').click(function() {
@@ -44,40 +44,40 @@ $(document).ready(function spin() {
                         i = 0;
                         if (j == 0)
                             $("#schools").fadeTo(500,0.30, function() {
-                                $("#schools").attr("src", $("#link").attr("images/Serpentard.png"));
+                                $("#schools").attr("src", $("#link").attr("/bundles/platform/images/Serpentard.png"));
                             }).fadeTo(500,1);
                         else
-                            document.getElementById("schools").src = "images/Serpentard.png";
+                            document.getElementById("schools").src = "/bundles/platform/images/Serpentard.png";
                         ++j;
                     }
                     else if (now % 360 > 90  && now % 360 < 180 && i != 1) {
                         i = 1;
                         if (j == 0)
                             $("#schools").fadeTo(500,0.30, function() {
-                                $("#schools").attr("src", $("#link").attr("images/Serdaigle.png"));
+                                $("#schools").attr("src", $("#link").attr("/bundles/platform/images/Serdaigle.png"));
                             }).fadeTo(500,1);
                         else
-                            document.getElementById("schools").src = "images/Serdaigle.png";
+                            document.getElementById("schools").src = "/bundles/platform/images/Serdaigle.png";
                         ++j;
                     }
                     else if (now % 360 > 180 && now % 360 < 270 && i != 2) {
                         i = 2;
                         if (j == 0)
                             $("#schools").fadeTo(500,0.30, function() {
-                                $("#schools").attr("src", $("#link").attr("images/Poufsouffle.png"));
+                                $("#schools").attr("src", $("#link").attr("/bundles/platform/images/Poufsouffle.png"));
                             }).fadeTo(500,1);
                         else
-                            document.getElementById("schools").src = "images/Poufsouffle.png";
+                            document.getElementById("schools").src = "/bundles/platform/images/Poufsouffle.png";
                         ++j;
                     }
                     else if (now % 360 > 270 && now % 360 < 360 && i != 3) {
                         i = 3;
                         if (j == 0)
                             $("#schools").fadeTo(500,0.30, function() {
-                                $("#schools").attr("src", $("#link").attr("images/Gryffondor.png"));
+                                $("#schools").attr("src", $("#link").attr("/bundles/platform/images/Gryffondor.png"));
                             }).fadeTo(500,1);
                         else
-                            document.getElementById("schools").src = "images/Gryffondor.png";
+                            document.getElementById("schools").src = "/bundles/platform/images/Gryffondor.png";
                         ++j;
                     }
                     return now;
@@ -100,9 +100,9 @@ $(document).ready(function spin() {
                 schools['Gryffondor'] += 1;
                 wavGryf.play();
             }
-            document.getElementById("schools").src = "images/Schools.png";
+            document.getElementById("schools").src = "/bundles/platform/images/Schools.png";
             $("#schools").fadeTo(500,0.30, function() {
-                $("#schools").attr("src", $("#link").attr("images/Schools.png"));
+                $("#schools").attr("src", $("#link").attr("/bundles/platform/images/Schools.png"));
             }).fadeTo(500,1);
             console.log('Gryffondor', schools['Gryffondor']);
             console.log('Serpentard', schools['Serpentard']);

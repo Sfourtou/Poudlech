@@ -8,8 +8,7 @@ class HomeController extends Controller
 {
   public function indexAction()
   {
-    $listOfHouses = $this->get('doctrine')->getRepository('AppBundle:House')->getAllNames();
-    return $this->render('PlatformBundle::index.html.twig');
+    return $this->render('PlatformBundle::spin.html.twig');
   }
 }
 
