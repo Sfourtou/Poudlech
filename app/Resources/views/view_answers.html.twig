@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+<select class="form-control input-lg m-bot15">
+    {% for question in questions %}
+      <option value="{{ question.id }}">{{ question.question }}</option>
+    {% endfor %}
+</select>
+
+<div style="height: 150px">
+  <div class="col-lg-3">
+    <div class="col-lg-8">
+      <img width="100" height="120" src="{{ asset('bundles/platform/img/Gryffondor.png') }}"></img>
+    </div>
+    <div class="col-lg-2">
+      <h1 style="float:right ; font-size: 70px">{{ gryffondor }}</h1>
+    </div>
+  </div>
+  <div class="col-lg-3">
+    <div class="col-lg-8">
+      <img width="100" height="120" src="{{ asset('bundles/platform/img/Serdaigle.png') }}"></img>
+    </div>
+    <div class="col-lg-2">
+      <h1 style="float:right ; font-size: 70px">{{ serdaigle }}</h1>
+    </div>
+  </div>
+  <div class="col-lg-3">
+    <div class="col-lg-8">
+      <img width="100" height="120" src="{{ asset('bundles/platform/img/Poufsouffle.png') }}"></img>
+    </div>
+    <div class="col-lg-2">
+      <h1 style="float:right ; font-size: 70px">{{ poufsouffle }}</h1>
+    </div>
+  </div>
+  <div class="col-lg-3">
+    <div class="col-lg-8">
+      <img width="100" height="120" src="{{ asset('bundles/platform/img/Serpentard.png') }}"></img>
+    </div>
+    <div class="col-lg-2">
+      <h1 style="float:right ; font-size: 70px">{{ serpentard }}</h1>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-12">
+    <section class="panel">
+    {% for answers in answersTab %}
+      {% if answers is not empty %}
+        <table class="table table-striped table-advance table-hover" id="question-{{ answers[0].question.id }}">
+          <tbody>
+            <tr>
+              <th>#</th>
+              <th>Full Name</th>
+              <th>Team</th>
+              <th>Answer</th>
+            </tr>
+            {% set i = 1 %}
+            {% for answer in answers %}
+                <tr>
+                    <td>{{ i }}</td>
+                    <td>{{ answer.user.username }}</td>
+                    <td>{{ answer.user.teamId.name }}</td>
+                    <td>{{ answer.answer }}</td>
+                </tr>
+            {% set i = i + 1 %}
+            {% endfor %}
+          </tbody>
+        </table>
+      {% endif %}
+    {% endfor %}
+  </section>
+</div>
+
+{% endblock %}

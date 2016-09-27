@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="img/favicon.png">
+
+    <title>POUDLECH</title>
+
+      <link href="{{ asset('bundles/platform/NiceAdmin/css/bootstrap.min.css')}}" rel="stylesheet">
+      <link href="{{ asset('bundles/platform/NiceAdmin/css/bootstrap-theme.css')}}" rel="stylesheet">
+      <link href="{{ asset('bundles/platform/NiceAdmin/css/elegant-icons-style.css')}}" rel="stylesheet" />
+      <link href="{{ asset('bundles/platform/NiceAdmin/css/font-awesome.min.css')}}" rel="stylesheet" />
+      <link href="{{ asset('bundles/platform/NiceAdmin/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css')}}" rel="stylesheet" />
+      <link href="{{ asset('bundles/platform/NiceAdmin/assets/fullcalendar/fullcalendar/fullcalendar.css')}}" rel="stylesheet" />
+      <link href="{{ asset('bundles/platform/NiceAdmin/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css')}}" rel="stylesheet" type="text/css" media="screen"/>
+      <link rel="stylesheet" href="{{ asset('bundles/platform/NiceAdmin/css/owl.carousel.css')}}" type="text/css">
+	  <link href="{{ asset('bundles/platform/NiceAdmin/css/jquery-jvectormap-1.2.2.css')}}" rel="stylesheet">
+	  <link rel="stylesheet" href="{{ asset('bundles/platform/NiceAdmin/css/fullcalendar.css')}}">
+	  <link href="{{ asset('bundles/platform/NiceAdmin/css/widgets.css')}}" rel="stylesheet">
+      <link href="{{ asset('bundles/platform/NiceAdmin/css/style.css')}}" rel="stylesheet">
+      <link href="{{ asset('bundles/platform/NiceAdmin/css/style-responsive.css')}}" rel="stylesheet" />
+	  <link href="{{ asset('bundles/platform/NiceAdmin/css/xcharts.min.css')}}" rel=" stylesheet">
+      <link href="{{ asset('bundles/platform/NiceAdmin/css/jquery-ui-1.10.4.min.css')}}" rel="stylesheet">
+      <link href="{{ asset('font/css/font-awesome.min.css')}}" rel="stylesheet">
+      <link href="{{ asset('bundles/platform/css/style.css') }}">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+
+  </head>
+
+  <body>
+  <section id="container" class="">
+      <header class="header dark-bg">
+            <div class="toggle-nav">
+                <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
+            </div>
+            <a href="index.html" class="logo">POUDL<span class="lite">ECH</span></a>
+            <div class="top-nav notification-row">
+              <a href="{{ path('fos_user_security_logout') }}"><span class="fa fa-sign-out fa-3x"></span></a>
+            </div>
+      </header>
+
+      <aside>
+          <div id="sidebar"  class="nav-collapse ">
+              <ul class="sidebar-menu">
+                  <li class="active">
+                      <a class="" href="{{ path('houses') }}">
+                          <i class="icon_house_alt"></i>
+                          <span>Houses</span>
+                      </a>
+                  </li>
+                  <li class="active">
+                      <a class="" href="{{ path('challenges') }}">
+                          <i class="icon_puzzle"></i>
+                          <span>Defis</span>
+                      </a>
+                  </li>
+              </ul>
+          </div>
+      </aside>
+
+      <section id="main-content">
+          <section class="wrapper">
+            {% block body %}
+            {% endblock %}
+		      </section>
+      </section>
+  </section>
+  </body>
+</html>

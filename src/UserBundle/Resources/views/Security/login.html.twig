@@ -1,0 +1,40 @@
+{% extends "layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block image %}{{ asset('bundles/platform/img/loginbackground.png') }}{% endblock %}
+
+{% block fos_user_content %}
+  {% if error %}
+    <div id="loginError" style="background-color: white; margin-left: 30% ; margin-top: 20px ; width: 40% ; text-align: center ">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+  {% endif %}
+
+<div class="container">
+<form class="login-form" action="{{ path("fos_user_security_check") }}" method="post" style="background: initial ; margin-top: 270px">
+  <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+  <div class="login-wrap">
+    <!-- <p class="login-img" style="color: #34aadc">
+      <i class="icon_lock_alt"></i>
+    </p> -->
+    <div class="input-group">
+      <span class="input-group-addon"><i class="icon_profile"></i></span>
+      <input class="form-control" type="text" placeholder="Username" id="username" name="_username" value="{{ last_username }}" required="required" />
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon"><i class="icon_key_alt"></i></span>
+      <input class="form-control" placeholder="Password" type="password" id="password" name="_password" required="required" />
+    </div>
+    <!-- <label class="checkbox" for="remember_me">
+      <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+      {{ 'security.login.remember_me'|trans }}
+    </label> -->
+
+    <input class="btn btn-primary btn-lg btn-block" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" style="background-color: #6200ff; border-color: #6200ff" />
+  </div>
+</form>
+</div>
+
+{% endblock fos_user_content %}

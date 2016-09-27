@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="col-lg-12">
+  <h3 class="page-header">
+    <i class="icon_puzzle"></i>
+    Add Challenge
+  </h3>
+</div>
+<div class="col-lg-6">
+  <section class="panel">
+    <div class="panel-heading">
+      <h4 style="line-height: 34px" >Add Challenge</h4>
+    </div>
+    <div class="panel-body">
+      {{ form_start(form, {'attr' : { 'role' : 'form' }}) }}
+      <div class="form-group">
+        {{ form_label(form.name, '', {'label_attr': {'class': '' }}) }}
+        {{ form_widget(form.name, {'attr' : {'class': 'form-control' }}) }}
+      </div>
+      <div class="form-group">
+        {{ form_label(form.description, '', {'label_attr': {'class': '' }}) }}
+        {{ form_widget(form.description, {'attr' : {'class': 'form-control' }}) }}
+      </div>
+      <div class="form-group">
+        {{ form_label(form.points, '', {'label_attr': {'class': '' }}) }}
+        {{ form_widget(form.points, {'attr' : {'class': 'form-control', 'onkeypress': 'validate(event)' }}) }}
+      </div>
+      <div class="form-group">
+        {{ form_label(form.startDate, '', {'label_attr': {'class': '' }}) }}
+        {{ form_widget(form.startDate, {'attr' : {'class' : '' }}) }}
+      </div>
+      <div class="form-group">
+        {{ form_label(form.endDate, '', {'label_attr': {'class': '' }}) }}
+        {{ form_widget(form.endDate, {'attr' : {'class' : '' }}) }}
+      </div>
+      <div class="form-group">
+        {{ form_label(form.place, '', {'label_attr': {'class': '' }}) }}
+        {{ form_widget(form.place, {'attr': {'class': 'form-control' }}) }}
+      </div>
+      {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary' }}) }}
+      {{ form_end(form) }}
+    </div>
+  </section>
+</div>
+<div class="col-lg-6">
+  <section class="panel">
+    <div class="panel-heading">
+      <h4 style="line-height: 34px">Add Question</h4>
+    </div>
+    <div class="panel-body">
+      {{ form_start(form_question, {'attr' : {'role': 'form' }}) }}
+      <div class="form-group">
+        {{ form_label(form_question.question, '', {'label_attr': {'class': '' }}) }}
+        {{ form_widget(form_question.question, {'attr' : {'class': 'form-control' }}) }}
+      </div>
+      <div class="form-group">
+        {{ form_label(form_question.points, '', {'label_attr': {'class': '' }}) }}
+        {{ form_widget(form_question.points, {'attr' : {'class': 'form-control', 'onkeypress': 'validate(event)' }}) }}
+      </div>
+      <div class="form-group">
+        {{ form_label(form_question.startDate, '', {'label_attr': {'class': '' }}) }}
+        {{ form_widget(form_question.startDate, {'attr' : {'class': '' }}) }}
+      </div>
+      <div class="form-group">
+        {{ form_label(form_question.endDate, '', {'label_attr': {'class': '' }}) }}
+        {{ form_widget(form_question.endDate, {'attr' : {'class': '' }}) }}
+      </div>
+      {{ form_widget(form_question.save, {'attr': {'class': 'btn btn-primary' }}) }}
+      {{ form_end(form_question) }}
+    </div>
+  </section>
+</div>
+
+<script type="text/javascript">
+function validate(evt) {
+  var theEvent = evt || window.event;
+  var key = theEvent.keyCode || theEvent.which;
+  key = String.fromCharCode( key );
+  var regex = /[0-9]|\./;
+  if( !regex.test(key) ) {
+    theEvent.returnValue = false;
+    if(theEvent.preventDefault) theEvent.preventDefault();
+  }
+}
+</script>
+
+{% endblock %}

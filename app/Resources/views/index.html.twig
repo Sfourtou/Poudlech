@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="row">
+  {% for team in teams %}
+  <div class="col-lg-6">
+    <section class="panel" style="background-image: url({{ asset('bundles/platform/img/' ~ team.name ~ '2.jpg') }}); background-size: cover">
+      <div class="panel-body text-center" id="house-{{ team.name }}" >
+        <div id="{{ team.name }}">
+          <img height="170" src="{{ asset('bundles/platform/img/' ~ team.name ~ '.png') }}"></img>
+        </div>
+      </div>
+      <div class="panel-footer" style="height: 60px">
+        <div style="border-right-style: solid ; border-right-width: thin ; width:50%;float:left" class="text-center">
+          <span style="padding-right: 15px ; color: black ; font-size: 40px; line-height: 40px">{% if teamsMembers is not empty and teamsMembers|length >= team.id %} {{ teamsMembers[team.id] }} {% else %} 0 {% endif %}</span>
+          <a style="" href="{{ path('team_list', {'teamName' : team.name }) }}"><span class="fa fa-users fa-3x"></span></a>
+        </div>
+        <div style="width:50% ; float:left" class="text-center">
+          <span style="padding-right: 15px ; color: black ; font-size: 40px ; line-height: 40px">{{ team.points }}</span>
+          <a style="color: #6b6f75"><span class="fa fa-trophy fa-3x"></span></a>
+        </div>
+      </div>
+    </section>
+  </div>
+{% endfor %}
+</div>
+{% endblock %}
