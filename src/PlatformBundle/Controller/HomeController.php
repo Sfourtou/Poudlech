@@ -8,7 +8,8 @@ class HomeController extends Controller
 {
   public function indexAction()
   {
-    return $this->render('PlatformBundle::spin.html.twig');
+      $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Unable to access this page');
+      return $this->render('PlatformBundle::spin.html.twig');
   }
 }
 
