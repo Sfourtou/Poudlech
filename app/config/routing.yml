@@ -2,6 +2,10 @@ user:
     resource: "@UserBundle/Resources/config/routing.yml"
     prefix:   /
 
+home:
+  path: /spin
+  defaults: { _controller: PlatformBundle:Home:index }
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
