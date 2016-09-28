@@ -14,14 +14,12 @@ var wavPouf = new Audio('/bundles/platform/wav/hufflepuff.wav');
 
 function getUsers() {
     function callBackFunction(data, result) {
-        $.each(data.list, function (k, v) {
-            result[result.length] = v;
-        })
+        result[result.length] = data.list;
     }
 
     var json = $.ajax({
         type: "GET",
-        url: 'http://',
+        url: 'localhost:8000/nameList',
         async: false,
         global: false,
         dataType: 'json',
@@ -34,6 +32,9 @@ function getUsers() {
     users = [];
     callBackFunction(json, users);
 }
+
+getUsers();
+console.log(users);
 
 $(document).ready(function spin() {
     $('#clicker').click(function() {
