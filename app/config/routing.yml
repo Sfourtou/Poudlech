@@ -29,6 +29,13 @@ team_list:
   path: /houses/{teamName}
   defaults: { _controller: AppBundle:House:listTeam }
 
+nameList:
+  path: /nameList
+  defaults: { _controller: PlatformBundle:Home:getName }
+
+
 answers_list:
   path: /view_answers
   defaults: { _controller: AppBundle:Answer:viewAnswers }
+
+

@@ -24,6 +24,15 @@ class UserRepository extends EntityRepository
 
     return $return_results;
   }
+
+  public function findNames()
+  {
+    $qb = $this->createQueryBuilder('u');
+    $qb->select('u.firstName, u.name')
+    ;
+
+    return $qb->getQuery()->getArrayResult();
+  }
 }
 
 ?>
