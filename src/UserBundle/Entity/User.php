@@ -144,11 +144,11 @@ use Doctrine\ORM\Mapping as ORM;
     /**
      * Set isTeamLeader
      *
-     * @param \bool $isTeamLeader
+     * @param \boolean $isTeamLeader
      *
      * @return User
      */
-    public function setIsTeamLeader(\bool $isTeamLeader)
+    public function setIsTeamLeader(\boolean $isTeamLeader)
     {
         $this->isTeamLeader = $isTeamLeader;
 
@@ -158,7 +158,7 @@ use Doctrine\ORM\Mapping as ORM;
     /**
      * Get isTeamLeader
      *
-     * @return \bool
+     * @return \boolean
      */
     public function getIsTeamLeader()
     {
