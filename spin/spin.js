@@ -1,3 +1,4 @@
+var users = [];
 var schools = {}
 var current = 0;
 
@@ -10,6 +11,29 @@ var wavGryf = new Audio('wav/gryffindor.wav');
 var wavSerp = new Audio('wav/slytherin.wav');
 var wavSerd = new Audio('wav/ravenclaw.wav');
 var wavPouf = new Audio('wav/hufflepuff.wav');
+
+function getUsers() {
+    function callBackFunction(data, result) {
+        $.each(data.list, function (k, v) {
+            result[result.length] = v;
+        })
+    }
+
+    var json = $.ajax({
+        type: "GET",
+        url: 'http://',
+        async: false,
+        global: false,
+        dataType: 'json',
+        crossDomain: true,
+        success: function (json) {
+            return json;
+        }
+    }).responseJSON;
+
+    users = [];
+    callBackFunction(json, users);
+}
 
 $(document).ready(function spin() {
     $('#clicker').click(function() {
