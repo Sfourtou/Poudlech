@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c5dfae65-7bae-4a84-a763-24fe0aa386c3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/defis.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/defis.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/routing.yml" afterPath="$PROJECT_DIR$/app/config/routing.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/AppBundle.php" afterPath="$PROJECT_DIR$/src/AppBundle/AppBundle.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PlatformBundle/Controller/HomeController.php" afterPath="$PROJECT_DIR$/src/PlatformBundle/Controller/HomeController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UserBundle/Repository/UserRepository.php" afterPath="$PROJECT_DIR$/src/UserBundle/Repository/UserRepository.php" />
-    </list>
+    <list default="true" id="c5dfae65-7bae-4a84-a763-24fe0aa386c3" name="Default" comment="" />
     <ignored path="Epilard.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -489,12 +482,12 @@
       <workItem from="1474997415117" duration="2760000" />
       <workItem from="1474993341325" duration="3943000" />
       <workItem from="1475006980562" duration="381000" />
-      <workItem from="1475007377382" duration="4895000" />
+      <workItem from="1475007377382" duration="4926000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31283000" />
+    <option name="totallyTimeSpent" value="31314000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="732" extended-state="0" />
