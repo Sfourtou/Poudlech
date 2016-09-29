@@ -33,9 +33,10 @@ nameList:
   path: /nameList
   defaults: { _controller: PlatformBundle:Home:getName }
 
-
 answers_list:
   path: /view_answers
   defaults: { _controller: AppBundle:Answer:viewAnswers }
 
-
+receive_list:
+  path: /updatedList/{name}/{school}
+  defaults: { _controller: Platform:Home:updatedList }

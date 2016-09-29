@@ -28,7 +28,10 @@ class UserRepository extends EntityRepository
   public function findNames()
   {
     $qb = $this->createQueryBuilder('u');
+
     $qb->select('u.firstName, u.name')
+        ->where('u.isTeamLeader != true')
+        ->where('u.teamId is null')
     ;
 
     return $qb->getQuery()->getArrayResult();

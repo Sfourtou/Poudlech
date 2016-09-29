@@ -16,10 +16,10 @@ class HomeController extends Controller
 
   public function getNameAction(Request $request)
   {
-//    if (!$request->isXmlHttpRequest())
-//    {
-//        return $this->redirectToRoute('houses');
-//    }
+    if (!$request->isXmlHttpRequest())
+    {
+        return $this->redirectToRoute('houses');
+    }
 
 
     $doc = $this->get('Doctrine');
@@ -28,6 +28,34 @@ class HomeController extends Controller
       $results = $doc->getRepository('UserBundle:User')->findNames();
 
       return new Response(json_encode($results));
+  }
+
+  public function updatedListAction(Request $request, $name, $school)
+  {
+      if (!$request->isXmlHttpRequest())
+      {
+          return $this->redirectToRoute('houses');
+      }
+
+      $doc = $this->getDoctrine();
+
+      $user = $doc->getRepository('UserBundle:User')->findByName($name);
+
+      if (isset($user)){
+
+          $schoolEntity = $doc->getRepository('AppBundle:House')->findByName($school);
+
+          if (isset($schoolEntity)){
+
+              $user->setTeamId($schoolEntity);
+              $user->setIsTeamLeader(false);
+
+              $doc->getManager()->persist($user);
+              $doc->getManager()->flush();
+          }
+      }
+
+      return true;
   }
 }
 
