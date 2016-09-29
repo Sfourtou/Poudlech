@@ -1,12 +1,25 @@
 #rotating {
-
     position: absolute;
     margin-left:150px;
 }
 
 #schools {
-    margin-top: 5%;
+    margin-top: 3%;
     text-align: center;
+}
+
+.selected {
+    color: red;
+}
+
+.user {
+    vertical-align: middle;
+    text-align: center;
+}
+
+@font-face {
+    font-family: "Harry Potter";
+    src: url(../font/HarryP.ttf);
 }
 
 html { position: absolute; top: 0; bottom: 0; left: 0; right: 0; }
@@ -15,4 +28,6 @@ html { position: absolute; top: 0; bottom: 0; left: 0; right: 0; }
 body {
     background-image: url(../images/Background.png);
     background-size: cover;
+    font-family: "Harry Potter";
+    font-size: 220%
 }

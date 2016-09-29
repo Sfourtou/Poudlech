@@ -1,6 +1,8 @@
 var users = [];
 var schools = {}
 var current = 0;
+var len = -1;
+var idx = 0;
 
 schools['Gryffondor'] = 0;
 schools['Serpentard'] = 0;
@@ -14,12 +16,14 @@ var wavPouf = new Audio('/bundles/platform/wav/hufflepuff.wav');
 
 function getUsers() {
     function callBackFunction(data, result) {
-        result[result.length] = data.list;
+        $.each(data, function (k, v) {
+            result[result.length] = v;
+        })
     }
 
     var json = $.ajax({
         type: "GET",
-        url: 'localhost:8000/nameList',
+        url: 'http://localhost:8000/nameList',
         async: false,
         global: false,
         dataType: 'json',
@@ -28,16 +32,96 @@ function getUsers() {
             return json;
         }
     }).responseJSON;
-
     users = [];
     callBackFunction(json, users);
 }
 
 getUsers();
-console.log(users);
+while (users[++len])
+    users[len].school = "nothing";
+
+function checkExist() {
+    var i = -1;
+    var nb = 0;
+    while (users[++i])
+        if (users[i].name != "Fourtou" && users[i].name != "Ben" && users[i].name != "marchal" && users[i].name != "mortier" && users[i].name != "test" && users[i].school == "nothing")
+            ++nb;
+    return (nb);
+}
+
+function end() {
+    $("#table").fadeTo(200,0, function() {
+        $("#table").html("Thanks you !");
+    }).fadeTo(200,1);
+    current = 2;
+}
+
+function place() {
+    console.log("Restant : ", checkExist());
+    if (checkExist() == 0) {
+        end();
+        return ;
+    }
+    if (idx != 0)
+        p = idx;
+    else
+        var p = 0;
+
+    while (users[p]) {
+        if (users[p].name != "Fourtou" && users[p].name != "Ben" && users[p].name != "marchal" && users[p].name != "mortier" && users[p].name != "test" && users[p].school == "nothing") {
+            $("#table").fadeTo(200,0, function() {
+                $("#table").html(users[p].firstName + " " + users[p].name);
+            }).fadeTo(200,1);
+            idx = p;
+            return ;
+        }
+        else
+            ++p;
+    }
+}
+place();
+
+function right() {
+    var p = idx + 1;
+    if (current > 0)
+        return ;
+    if (p >= Object.keys(users).length - 1)
+        p = 0;
+    while (users[p]) {
+        if (users[p].name == "Fourtou" || users[p].name == "Ben" || users[p].name == "marchal" || users[p].name == "mortier" || users[p].name == "test" || users[p].school != "nothing")
+            ++p;
+        else {
+            $("#table").fadeTo(200,0, function() {
+                $("#table").html(users[p].firstName + " " + users[p].name);
+            }).fadeTo(200,1);
+            idx = p;
+            return ;
+        }
+    }
+}
+
+function left() {
+    var p = idx -1;
+
+    if (current > 0)
+        return ;
+    while (users[p]) {
+        if (users[p].name == "Fourtou" || users[p].name == "Ben" || users[p].name == "marchal" || users[p].name == "mortier" || users[p].name == "test" || users[p].school != "nothing")
+            --p;
+        else {
+            $("#table").fadeTo(200,0, function() {
+                $("#table").html(users[p].firstName + " " + users[p].name);
+            }).fadeTo(200,1);
+            idx = p;
+            return ;
+        }
+        if (p == 0)
+            p = Object.keys(users).length -1;
+    }
+}
 
 $(document).ready(function spin() {
-    $('#clicker').click(function() {
+    $('#schools').click(function() {
         ++current;
         if (current > 1)
             return ;
@@ -55,7 +139,7 @@ $(document).ready(function spin() {
             rand = 45 + test;
             rand += 1080;
             if (schools['Serdaigle'] == 26 && schools['Poufsouffle'] == 26 && schools['Gryffondor'] == 26 && schools['Serpentard'] == 26) {
-                alert('C\'est fini les conneries');
+                end();
                 return ;
             }
         }
@@ -111,18 +195,22 @@ $(document).ready(function spin() {
         setTimeout(function() {
             if (rand == 1305) {
                 schools['Poufsouffle'] += 1;
+                users[idx].school = "Poufsouffle";
                 wavPouf.play();
             }
             else if (rand == 1485) {
                 schools['Serpentard'] += 1;
+                users[idx].school = "Serpentard";
                 wavSerp.play();
             }
             else if (rand == 1215) {
                 schools['Serdaigle'] += 1;
+                users[idx].school = "Serdaigle";
                 wavSerd.play();
             }
             else {
                 schools['Gryffondor'] += 1;
+                users[idx].school = "Gryffondor";
                 wavGryf.play();
             }
             document.getElementById("schools").src = "/bundles/platform/images/Schools.png";
@@ -134,6 +222,21 @@ $(document).ready(function spin() {
             console.log('Serdaigle', schools['Serdaigle']);
             console.log('Poufsouffle', schools['Poufsouffle']);
             current = 0;
+            console.log(users[idx]);
+            console.log(users);
+            delete users[idx].firstName;
+            var json = JSON.stringify(users[idx]);
+            console.log(json);
+            $.ajax({
+                type: "POST",
+                url: 'http://localhost:8000/updatedList',
+                async: false,
+                global: false,
+                dataType: 'json',
+                crossDomain: true,
+                data: json
+            })
+            place();
         }, 7000);
     });
 });
