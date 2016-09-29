@@ -23,7 +23,7 @@ function getUsers() {
 
     var json = $.ajax({
         type: "GET",
-        url: 'http://localhost:8000/nameList',
+        url: 'http://poudlech.com/app_dev.php/nameList',
         async: false,
         global: false,
         dataType: 'json',
@@ -40,6 +40,45 @@ getUsers();
 while (users[++len])
     users[len].school = "nothing";
 
+$('#right').click(function () {
+    var p = idx + 1;
+    if (current > 0)
+        return ;
+    if (p >= Object.keys(users).length - 1)
+        p = 0;
+    while (users[p]) {
+        if (users[p].name == "Fourtou" || users[p].name == "Ben" || users[p].name == "marchal" || users[p].name == "mortier" || users[p].name == "test" || users[p].school != "nothing")
+            ++p;
+        else {
+            $("#table").fadeTo(200,0, function() {
+                $("#table").html(users[p].firstName + " " + users[p].name);
+            }).fadeTo(200,1);
+            idx = p;
+            return ;
+        }
+    }
+});
+
+$('#left').click(function () {
+    var p = idx -1;
+
+    if (current > 0)
+        return ;
+    if (p < 0)
+        p = Object.keys(users).length -1;
+    while (users[p]) {
+        if (users[p].name == "Fourtou" || users[p].name == "Ben" || users[p].name == "marchal" || users[p].name == "mortier" || users[p].name == "test" || users[p].school != "nothing")
+            --p;
+        else {
+            $("#table").fadeTo(200,0, function() {
+                $("#table").html(users[p].firstName + " " + users[p].name);
+            }).fadeTo(200,1);
+            idx = p;
+            return ;
+        }
+    }
+});
+
 function checkExist() {
     var i = -1;
     var nb = 0;
@@ -47,14 +86,14 @@ function checkExist() {
         if (users[i].name != "Fourtou" && users[i].name != "Ben" && users[i].name != "marchal" && users[i].name != "mortier" && users[i].name != "test" && users[i].school == "nothing")
             ++nb;
     return (nb);
-}
+};
 
 function end() {
     $("#table").fadeTo(200,0, function() {
         $("#table").html("Thanks you !");
     }).fadeTo(200,1);
     current = 2;
-}
+};
 
 function place() {
     console.log("Restant : ", checkExist());
@@ -80,45 +119,6 @@ function place() {
     }
 }
 place();
-
-function right() {
-    var p = idx + 1;
-    if (current > 0)
-        return ;
-    if (p >= Object.keys(users).length - 1)
-        p = 0;
-    while (users[p]) {
-        if (users[p].name == "Fourtou" || users[p].name == "Ben" || users[p].name == "marchal" || users[p].name == "mortier" || users[p].name == "test" || users[p].school != "nothing")
-            ++p;
-        else {
-            $("#table").fadeTo(200,0, function() {
-                $("#table").html(users[p].firstName + " " + users[p].name);
-            }).fadeTo(200,1);
-            idx = p;
-            return ;
-        }
-    }
-}
-
-function left() {
-    var p = idx -1;
-
-    if (current > 0)
-        return ;
-    while (users[p]) {
-        if (users[p].name == "Fourtou" || users[p].name == "Ben" || users[p].name == "marchal" || users[p].name == "mortier" || users[p].name == "test" || users[p].school != "nothing")
-            --p;
-        else {
-            $("#table").fadeTo(200,0, function() {
-                $("#table").html(users[p].firstName + " " + users[p].name);
-            }).fadeTo(200,1);
-            idx = p;
-            return ;
-        }
-        if (p == 0)
-            p = Object.keys(users).length -1;
-    }
-}
 
 $(document).ready(function spin() {
     $('#schools').click(function() {
@@ -229,7 +229,7 @@ $(document).ready(function spin() {
             console.log(json);
             $.ajax({
                 type: "POST",
-                url: 'http://localhost:8000/updatedList/' + users[idx].name + "/" + users[idx].school,
+                url: 'http://poudlech.com/app_dev.php/updatedList/' + users[idx].name + "/" + users[idx].school,
                 async: false,
                 global: false,
                 dataType: 'json',

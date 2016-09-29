@@ -39,4 +39,4 @@ answers_list:
 
 receive_list:
   path: /updatedList/{name}/{school}
-  defaults: { _controller: Platform:Home:updatedList }
+  defaults: { _controller: PlatformBundle:Home:updatedList }
