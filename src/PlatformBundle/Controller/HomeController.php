@@ -27,7 +27,14 @@ class HomeController extends Controller
 
       $results = $doc->getRepository('UserBundle:User')->findNames();
 
-      return new Response(json_encode($results));
+
+      $response = new Response(json_encode($results));
+      header("Access-Control-Allow-Origin: *");
+      $response->headers->set('Access-Control-Allow-Origin', '*');
+      $response->headers->set('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, PATCH, OPTIONS');
+      $response->headers->set('Content-Type', 'text/plain');
+
+      return $response;
   }
 
   public function updatedListAction(Request $request, $name, $school)
@@ -53,6 +60,12 @@ class HomeController extends Controller
               $doc->getManager()->flush();
           }
       }
+
+      $response = new Response();
+      header("Access-Control-Allow-Origin: *");
+      $response->headers->set('Access-Control-Allow-Origin', '*');
+      $response->headers->set('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, PATCH, OPTIONS');
+      $response->headers->set('Content-Type', 'text/plain');
 
       return new Response();
   }
