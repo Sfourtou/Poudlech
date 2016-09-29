@@ -229,7 +229,7 @@ $(document).ready(function spin() {
             console.log(json);
             $.ajax({
                 type: "POST",
-                url: 'http://localhost:8000/updatedList',
+                url: 'http://localhost:8000/updatedList/' + users[idx].name + "/" + users[idx].school,
                 async: false,
                 global: false,
                 dataType: 'json',
